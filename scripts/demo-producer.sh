@@ -10,7 +10,7 @@ echo " Kafka Producer Demo (KRaft Mode)"
 echo "=========================================="
 echo ""
 echo "Topic: $TOPIC_NAME"
-echo "Kafka: 20.44.51.163:9092"
+echo "Kafka: 20.x.x.x:9092"
 echo ""
 echo "Sample messages to send:"
 echo '  {"event": "customer_signup", "id": "C001", "timestamp": "2026-05-14T12:00:00Z"}'

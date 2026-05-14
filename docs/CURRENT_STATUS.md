@@ -30,10 +30,10 @@ schemaregistry-0      1/1     Running   0          9m
 ### External Access (from anywhere)
 ```bash
 # Kafka Bootstrap Server
-KAFKA_BOOTSTRAP=20.44.51.163:9092
+KAFKA_BOOTSTRAP=20.x.x.x:9092
 
 # Individual Broker
-KAFKA_BROKER_0=20.219.100.61:9092
+KAFKA_BROKER_0=20.y.y.y:9092
 ```
 
 ### Internal Access (within Kubernetes)

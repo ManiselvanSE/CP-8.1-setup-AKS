@@ -21,7 +21,7 @@
 - **Status**: ✅ RUNNING (1/1)
 - **Pod**: kafka-0
 - **Image**: confluentinc/cp-server:8.1.0
-- **Bootstrap Server**: **20.44.51.163:9092** (External LoadBalancer)
+- **Bootstrap Server**: **20.x.x.x:9092** (External LoadBalancer)
 - **Internal Endpoint**: kafka.confluent.svc.cluster.local:9071
 
 ### Schema Registry
@@ -51,10 +51,10 @@
 ### External Access
 ```bash
 # Kafka Bootstrap Server (from outside cluster)
-KAFKA_BOOTSTRAP_SERVER=20.44.51.163:9092
+KAFKA_BOOTSTRAP_SERVER=20.x.x.x:9092
 
 # Individual Broker
-KAFKA_BROKER_0=20.219.100.61:9092
+KAFKA_BROKER_0=20.y.y.y:9092
 ```
 
 ### Internal Access (from within cluster)

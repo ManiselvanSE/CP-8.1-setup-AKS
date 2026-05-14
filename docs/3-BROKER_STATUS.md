@@ -21,15 +21,15 @@
 
 ### Kafka Bootstrap Server (Load Balanced)
 ```
-20.235.47.178:9092
+20.x.x.x:9092
 ```
 
 ### Individual Broker Endpoints
 | Broker | ID | External IP | Port |
 |--------|-----|-------------|------|
-| kafka-0 | 0 | 20.235.46.215 | 9092 |
-| kafka-1 | 1 | 20.235.8.132 | 9092 |
-| kafka-2 | 2 | 20.235.177.55 | 9092 |
+| kafka-0 | 0 | 20.y.y.y | 9092 |
+| kafka-1 | 1 | 20.z.z.z | 9092 |
+| kafka-2 | 2 | 20.a.a.a | 9092 |
 
 ---
 
@@ -306,7 +306,7 @@ Resources per Broker:
   
 External Access:
   Type: LoadBalancer (Azure)
-  Bootstrap: 20.235.47.178:9092
+  Bootstrap: 20.x.x.x:9092
   
 Namespace: confluent
 Storage Class: managed-csi (Azure Managed Disks)
