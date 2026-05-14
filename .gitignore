@@ -1,0 +1,36 @@
+# Support bundles and archives
+*.tar.gz
+*.zip
+support-bundle-*/
+confluent-support-bundle-*/
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# Kubernetes secrets (if any)
+*secret*.yaml
+credentials*.yaml
+
+# Local test data
+test-data/
+tmp/
+
+# Backup files
+*.bak
+*.backup

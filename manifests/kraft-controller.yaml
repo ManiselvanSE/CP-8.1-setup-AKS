@@ -1,0 +1,28 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: KRaftController
+metadata:
+  name: kraft-controller
+  namespace: confluent
+spec:
+  replicas: 3
+  image:
+    application: confluentinc/cp-kraft-controller:8.1.0
+    init: confluentinc/confluent-init-container:2.11.3
+  dataVolumeCapacity: 10Gi
+  storageClass:
+    name: managed-csi
+  podTemplate:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+  controllerQuorumVoters:
+    - brokerEndpoint: kraft-controller-0.kraft-controller.confluent.svc.cluster.local:9074
+      nodeId: 1001
+    - brokerEndpoint: kraft-controller-1.kraft-controller.confluent.svc.cluster.local:9074
+      nodeId: 1002
+    - brokerEndpoint: kraft-controller-2.kraft-controller.confluent.svc.cluster.local:9074
+      nodeId: 1003

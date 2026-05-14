@@ -1,0 +1,35 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka
+  namespace: confluent
+spec:
+  replicas: 3
+  image:
+    application: confluentinc/cp-server:8.1.0
+    init: confluentinc/confluent-init-container:3.1.0
+  dataVolumeCapacity: 10Gi
+  storageClass:
+    name: managed-csi
+  podTemplate:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 768Mi
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+  dependencies:
+    kRaftController:
+      clusterRef:
+        name: kraftcontroller
+  metricReporter:
+    enabled: true
+  listeners:
+    external:
+      externalAccess:
+        type: loadBalancer
+        loadBalancer:
+          domain: "kafka.demo.local"
+          advertisedPort: 9092
+  # KRaft mode: no Zookeeper dependency. Operator will manage controller/worker roles.

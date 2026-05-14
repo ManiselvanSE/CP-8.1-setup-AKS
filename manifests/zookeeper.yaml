@@ -1,0 +1,22 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Zookeeper
+metadata:
+  name: zookeeper
+  namespace: confluent
+spec:
+  replicas: 1
+  image:
+    application: confluentinc/cp-zookeeper:7.8.1
+    init: confluentinc/confluent-init-container:2.11.3
+  dataVolumeCapacity: 5Gi
+  logVolumeCapacity: 5Gi
+  storageClass:
+    name: managed-csi
+  podTemplate:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi

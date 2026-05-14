@@ -1,0 +1,49 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: ControlCenter
+metadata:
+  name: controlcenter
+  namespace: confluent
+spec:
+  replicas: 1
+  image:
+    application: confluentinc/cp-enterprise-control-center-next-gen:2.4.1
+    init: confluentinc/confluent-init-container:3.1.2
+  dataVolumeCapacity: 5Gi
+  storageClass:
+    name: managed-csi
+  podTemplate:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 768Mi
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+  configOverrides:
+    server:
+      - confluent.controlcenter.internal.topics.replication=1
+      - confluent.controlcenter.command.topic.replication=1
+      - confluent.monitoring.interceptor.topic.replication=1
+      - confluent.metrics.topic.replication=1
+      - confluent.controlcenter.streams.num.stream.threads=1
+  externalAccess:
+    type: loadBalancer
+    loadBalancer:
+      domain: "c3.demo.local"
+      port: 9021
+  dependencies:
+    kafka:
+      bootstrapEndpoint: kafka.confluent.svc.cluster.local:9071
+    schemaRegistry:
+      url: http://schemaregistry.confluent.svc.cluster.local:8081
+    prometheusClient:
+      url: http://controlcenter.confluent.svc.cluster.local:9090
+    alertManagerClient:
+      url: http://controlcenter.confluent.svc.cluster.local:9093
+  services:
+    prometheus:
+      image: confluentinc/cp-enterprise-prometheus:2.4.1
+      pvc:
+        dataVolumeCapacity: 5Gi
+    alertmanager:
+      image: confluentinc/cp-enterprise-alertmanager:2.4.1
