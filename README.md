@@ -83,8 +83,7 @@ CP-8.1-setup-AKS/
 │   ├── kafka.yaml                      # Kafka broker configuration
 │   ├── controlcenter-nextgen.yaml      # Control Center with monitoring
 │   ├── connect.yaml                    # Kafka Connect (optional)
-│   ├── schemaregistry.yaml             # Schema Registry (optional)
-│   └── zookeeper.yaml                  # Zookeeper (legacy reference)
+│   └── schemaregistry.yaml             # Schema Registry (optional)
 ├── scripts/                            # Utility scripts
 │   ├── access-urls.sh                  # Get access URLs and IPs
 │   ├── check-status.sh                 # Check deployment status

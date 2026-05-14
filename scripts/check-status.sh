@@ -3,7 +3,7 @@
 echo "=== Confluent Platform Status ==="
 echo ""
 echo "1. Component Status:"
-kubectl get zookeeper,kafka,schemaregistry,connect,controlcenter -n confluent
+kubectl get kraftcontroller,kafka,schemaregistry,connect,controlcenter -n confluent
 echo ""
 echo "2. Pod Status:"
 kubectl get pods -n confluent
